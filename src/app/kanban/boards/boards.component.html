@@ -6,7 +6,7 @@
   </button>
 </mat-toolbar>
 
-<div cdkDropList cdkDropListGroup cdkDropListOrientation="horizontal">
+<div cdkDropList cdkDropListGroup cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropBoard($event)">
   <div class="borad-list-container" cdkDrag *ngFor="let board of boards">
     <div class="board-list">
       <mat-card>

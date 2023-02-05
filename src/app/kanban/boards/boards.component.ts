@@ -53,6 +53,14 @@ export class BoardsComponent implements OnInit {
     });
   }
 
+  dropBoard(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.boards, event.previousIndex, event.currentIndex);
+
+    this.boards.forEach((board, index) => {
+      if (board.id) this.boardService.updateBoardsPriority(board.id, index);
+    });
+  }
+
   drop(event: CdkDragDrop<Board>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(

@@ -72,6 +72,13 @@ export class BoardService {
     });
   }
 
+  // Update priority
+  async updateBoardsPriority(boardId: string, priority: number) {
+    return updateDoc(doc(this.firestore, 'boards/' + boardId), {
+      priority,
+    });
+  }
+
   async taskActionBoard(boardId: string, task: Task) {
     console.log('Board::' + boardId, task);
 
