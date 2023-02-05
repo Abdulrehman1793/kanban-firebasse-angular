@@ -71,4 +71,18 @@ export class BoardService {
       tasks: arrayUnion(task),
     });
   }
+
+  async taskActionBoard(boardId: string, task: Task) {
+    console.log('Board::' + boardId, task);
+
+    return updateDoc(doc(this.firestore, 'boards/' + boardId), {
+      tasks: arrayRemove(task),
+    });
+  }
+
+  async updateTasksOfBoardOnTransfer(boardId: string, tasks: Task[]) {
+    return updateDoc(doc(this.firestore, 'boards/' + boardId), {
+      tasks,
+    });
+  }
 }

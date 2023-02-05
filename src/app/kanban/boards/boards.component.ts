@@ -52,4 +52,35 @@ export class BoardsComponent implements OnInit {
       console.log('The dialog was closed', result);
     });
   }
+
+  drop(event: CdkDragDrop<Board>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data.tasks ?? [],
+        event.previousIndex,
+        event.currentIndex
+      );
+      this.boardService.updateTasksOfBoardOnTransfer(
+        event.container.data.id!,
+        event.container.data.tasks!
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data.tasks ?? [],
+        event.container.data.tasks ?? [],
+        event.previousIndex,
+        event.currentIndex
+      );
+
+      this.boardService.taskActionBoard(
+        event.previousContainer.data.id!,
+        event.container.data.tasks![event.currentIndex]
+      );
+
+      this.boardService.updateTasksOfBoardOnTransfer(
+        event.container.data.id!,
+        event.container.data.tasks!
+      );
+    }
+  }
 }

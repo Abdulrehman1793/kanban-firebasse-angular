@@ -1,9 +1,57 @@
 .borad-list-container {
   width: 275px;
   max-width: 100%;
-  margin: 0 25px 25px 0;
+  margin: 12px 18px 18px 12px;
   display: inline-block;
   vertical-align: top;
+}
+
+.board-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+
+.board-list-box {
+  margin-top: 6px;
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.blue {
+  background-color: #71deff;
+  color: black;
+}
+.green {
+  background: #7ee9cb;
+  color: black;
+}
+.yellow {
+  background: #ffcf44;
+  color: black;
+}
+.purple {
+  background: #b15cff;
+}
+.red {
+  background: #e74a4a;
+}
+
+.gray {
+  background: gray;
+  text-decoration: line-through;
 }
 
 .fill-space {

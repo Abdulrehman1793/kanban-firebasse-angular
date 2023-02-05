@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Board } from '../board.model';
 import { BoardService } from '../board.service';
@@ -43,7 +44,9 @@ export class CreateBoardComponent implements OnInit {
       this.boardService
         .createBoard({
           ...this.data,
-          tasks: [{ description: 'Hello', label: 'yellow' }],
+          tasks: [
+            { description: 'Hello', label: 'yellow', time: Timestamp.now() },
+          ],
         })
         .then((response) => {
           this.dialogRef.close(response.id);
