@@ -1,1 +1,29 @@
-<p>boards works!</p>
+<mat-toolbar>
+  <span>Kanban Dashboard</span>
+  <span class="fill-space"></span>
+  <button mat-fab color="primary" (click)="onCreateBoardDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div cdkDropList cdkDropListGroup cdkDropListOrientation="horizontal">
+  <div class="borad-list-container" cdkDrag *ngFor="let board of boards">
+    <div class="board-list">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            {{ board.title }}
+          </mat-card-title>
+          <span class="fill-space"></span>
+          <mat-icon class="handle" cdkDragHandle>drag_indicator</mat-icon>
+        </mat-card-header>
+        <mat-card-actions>
+          <button style="width: 100%;" mat-flat-button color="primary" (click)="addTaskDialog(board)">
+            <mat-icon>add</mat-icon>
+            New Task
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

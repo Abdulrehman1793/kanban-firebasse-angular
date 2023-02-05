@@ -1,0 +1,11 @@
+.borad-list-container {
+  width: 275px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.fill-space {
+  flex: 1 1 auto;
+}
