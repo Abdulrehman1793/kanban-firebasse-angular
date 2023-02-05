@@ -11,6 +11,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { AuthFormComponent } from './auth-form/auth-form.component';
 import { TitlePipe } from './title.pipe';
+import { GoogleSigninDirective } from './google-signin.directive';
 
 const materialModules = [
   MatCardModule,
@@ -20,7 +21,7 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [AuthPageComponent, AuthFormComponent, TitlePipe],
+  declarations: [AuthPageComponent, AuthFormComponent, TitlePipe, GoogleSigninDirective],
   imports: [
     CommonModule,
     AuthRoutingModule,
