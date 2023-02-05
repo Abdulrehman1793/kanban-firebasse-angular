@@ -1,1 +1,22 @@
-<p>auth-page works!</p>
+<main>
+  <div *ngIf="!(user$ | async)">
+    <h1>Login</h1>
+
+    <!-- <button mat-raised-button appGoogleSignin>
+      <img src="/assets/google-logo.svg" /> Login with Google
+    </button> -->
+
+    <!-- <h5>OR</h5> -->
+
+    <app-auth-form></app-auth-form>
+  </div>
+
+  <div *ngIf="user$ | async as user" class="logout">
+    <p>
+      Logged in as <strong>{{ user.email }}</strong>
+    </p>
+
+    <!-- <button mat-stroked-button (click)="auth.signOut()">Logout</button> -->
+  </div>
+
+</main>

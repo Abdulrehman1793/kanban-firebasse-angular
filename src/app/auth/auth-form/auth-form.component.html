@@ -1,1 +1,68 @@
-<p>auth-form works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-header>
+      <mat-card-title>{{ type | title }}</mat-card-title>
+    </mat-card-header>
+  </mat-card-header>
+
+  <mat-card-content>
+    <br />
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput formControlName="email" type="email" placeholder="Email" autocomplete="off" />
+
+        <mat-error *ngIf="email.hasError('email')">
+          You must enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          Email address is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!isPasswordReset">
+        <input matInput formControlName="password" type="password" placeholder="Password" autocomplete="off" />
+
+        <mat-error *ngIf="password.hasError('required')">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="password.hasError('minlength')">
+          Password must be at least 6 characters long
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field [color]="passwordDoesMatch ? 'accent' : 'warn'" *ngIf="isSignup">
+        <input matInput formControlName="passwordConfirm" type="password" placeholder="Confirm password"
+          autocomplete="off" />
+
+        <mat-error *ngIf="passwordConfirm.hasError('required') && !passwordDoesMatch">
+          Password does not match
+        </mat-error>
+      </mat-form-field>
+
+      <mat-error class="server-error">{{ serverMessage }}</mat-error>
+
+      <button style="width: 100%;" *ngIf="isPasswordReset" mat-stroked-button type="submit" [disabled]="loading">
+        Send Reset Email
+      </button>
+
+      <button style="width: 100%;" *ngIf="!isPasswordReset" mat-raised-button color="accent" type="submit"
+        [disabled]="form.invalid || !passwordDoesMatch || loading">
+        Submit
+      </button>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button *ngIf="isSignup" mat-button (click)="changeType('login')">
+      Returning user?
+    </button>
+    <button *ngIf="isLogin" size="small" mat-button (click)="changeType('signup')">
+      New user?
+    </button>
+    <button *ngIf="isPasswordReset" size="small" mat-button (click)="changeType('login')">Back</button>
+
+    <button mat-button *ngIf="isLogin && !isPasswordReset" (click)="changeType('reset')">
+      Forgot password?
+    </button>
+  </mat-card-actions>
+</mat-card>
