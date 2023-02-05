@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kanban-firebase-angular": {
+      "hosting": {
+        "kanban-firebase-angular": [
+          "kanban-firebase-angular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kanban-firebase-angular"
+  }
+}
