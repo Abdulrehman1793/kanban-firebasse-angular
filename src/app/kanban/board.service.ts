@@ -80,7 +80,7 @@ export class BoardService {
   }
 
   async taskActionBoard(boardId: string, task: Task) {
-    console.log('Board::' + boardId, task);
+    // console.log('Board::' + boardId, task);
 
     return updateDoc(doc(this.firestore, 'boards/' + boardId), {
       tasks: arrayRemove(task),
